@@ -10,7 +10,28 @@
 
 </head>
 <body>
-  <h1>Color Cards</h1>
+  <div class="config-container">
+    <h1>Color Cards Configuration</h1>
+    <h2>Enter card configuration here:</h2>
+    <form class="config-form" action="index.html" method="post">
+      <div class="input-container">
+        <label for="color-picker">Card color: </label>
+        <input type="color" name="color-picker" value="#ffffff"><br>
+      </div>
+      <div class="input-container">
+        <label for="duration-number">Seconds to show: </label>
+        <input type="number" name="duration-number" value="60" min="0"><br>
+      </div>
+      <div class="input-container">
+        <label for="countdown-on">Display countdown:</label>
+        <input type="checkbox" name="countdown-on" value="countdown"><br>
+      </div>
+      <div class="input-container">
+        <button type="button" name="add-button">Add Card</button>
+      </div>
+    </form>
+
+  </div>
 
 </body>
 

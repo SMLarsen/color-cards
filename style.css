@@ -1,3 +1,34 @@
 body {
   background-color: red;
 }
+
+.config-container {
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  flex-flow: row;
+  text-align: center;
+}
+
+.config-form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+label {
+  margin: 5px;
+  padding-left: 10px;
+  width: 200px;
+}
+
+button {
+  width: 100px;
+  margin: 10px 150px 10px 150px;
+}
