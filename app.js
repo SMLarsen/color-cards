@@ -1,16 +1,45 @@
 var card = {};
+var inputArray = [];
+var cardArray = [];
+var position = 0;
 
-function Card(color, timerSeconds, showTimer) {
+function Card(position, color, timerSeconds, showTimer) {
+  this.position = position;
   this.color = color;
   this.timerSeconds = timerSeconds;
   this.showTimer = showTimer;
 }
 
-var cardArray = [];
+$(document).ready(function() {
 
-for (var i = 0; i < 3; i++) {
-  card = new Card('red', 1000, false);
+  $("#add-button").on("click", function(event) {
+    event.preventDefault();
+    addCard();
+  });
+
+function addCard() {
+  inputArray = $(".config-form").serializeArray();
+  $.each(inputArray, function(i, field){
+    $("#results").append(field.name + ":" + field.value + " ");
+  });
+  var color = '';
+  var timerSeconds = 0;
+  var showTimer = false;
+  cardValues = {};
+  inputArray.forEach(function (element, index, array) {
+    cardValues[element.name] = element.value;
+  });
+  position++;
+  color = cardValues.color;
+  timerSeconds = cardValues.duration;
+  showTimer = false;
+  if (cardValues.countdown === 'true') {
+    showTimer = true;
+  }
+  card = new Card(position, color, timerSeconds, showTimer);
   cardArray.push(card);
+  console.log(cardArray);
 }
 
-console.log(cardArray);
+  
+});
