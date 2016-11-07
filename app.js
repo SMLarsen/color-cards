@@ -38,8 +38,20 @@ function addCard() {
   }
   card = new Card(position, color, timerSeconds, showTimer);
   cardArray.push(card);
+  displayCard(card);
   console.log(cardArray);
 }
 
-  
+function displayCard (card) {
+  var string = '<tr class="cardRow">';
+  string += '<td>' + card.position + '</td>';
+  string += '<td>' + card.color + '</td>';
+  string += '<td>' + card.timerSeconds + '</td>';
+  string += '<td>' + card.showTimer + '</td>';
+  string += '</tr>';
+  $('#card-table').append(string);
+  console.log(1234);
+}
+
+
 });
