@@ -20,7 +20,7 @@
       </div>
       <div class="input-container">
         <label for="duration">Seconds to show: </label>
-        <input type="number" name="duration" value="60" min="0"><br>
+        <input type="number" name="duration" value="10" min="0"><br>
       </div>
       <div class="input-container">
         <label for="countdown">Display countdown:</label>
@@ -30,6 +30,7 @@
         <button type="button" id="add-button" name="add-button">Add Card</button>
       </div>
     </form>
+    <button type="button" id="start-button" name="start">Start</button>
     <div id="cards">
       <table id="card-table">
         <tr>
@@ -42,7 +43,11 @@
     </div>
 
   </div>
-
+  <div id="counter">
+    <h4 id="counter-seconds">test</h4>
+    <button id="start-btn" type="button" name="start">Start</button>
+    <button id="stop-btn" type="button" name="stop">Stop</button>
+  </div>
 </body>
 
 </html>

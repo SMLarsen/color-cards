@@ -1,5 +1,5 @@
 body {
-  background-color: red;
+  background-color: olive;
 }
 
 .config-container {
@@ -45,4 +45,32 @@ table, th, td {
 th, td {
   text-align: center;
   width: 150px;
+}
+
+.fadeOut {
+  animation: fadeOut 2s ease-out;
+}
+
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   1% {
+      opacity: .99;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+@keyframes fadeOut {
+   0% {
+      opacity: 1;
+   }
+   99% {
+      opacity: .99;
+   }
+   100% {
+      opacity: 0;
+   }
 }
