@@ -1,9 +1,11 @@
 body {
-  background-color: olive;
+  background-color: #008062;
 }
 
 .config-container {
   background-color: lightgrey;
+  margin: 25px 30%;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +21,8 @@ h1 {
   width: 400px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  background-color: white;
+  box-shadow: 10px 10px 5px darkgrey;
 }
 
 label {
@@ -35,11 +38,12 @@ button {
 
 table {
     border-collapse: collapse;
+    box-shadow: 10px 10px 5px darkgrey;
 }
 
 table, th, td {
   margin: 20px 0;
-    border: 1px solid black;
+    border: 1px solid darkgrey;
 }
 
 th, td {
@@ -73,4 +77,31 @@ th, td {
    100% {
       opacity: 0;
    }
+}
+
+/*display container and elements*/
+
+h4 {
+  font-size: 100px;
+}
+
+#display-container {
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#controls-container {
+  position: absolute;
+  bottom: 20px;
+}
+
+#controls-container button {
+  width: 100px;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 5px 5px 2px darkgrey;
 }

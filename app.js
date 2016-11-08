@@ -13,6 +13,7 @@ function Card(position, color, timerSeconds, showTimer) {
   this.showTimer = showTimer;
 }
 
+// create card deck for testing purposes
 // var card = new Card(0, 'orange', 2, false);
 // cardArray.push(card);
 // var card = new Card(0, 'red', 2, false);
@@ -92,6 +93,7 @@ $(document).ready(function() {
     card = cardArray[currentCard];
     currentCard++;
     $('.config-container').css("visibility", "hidden");
+    $('.display-container').css("visibility", "visible");
     $('body').css("background-color", card.color);
     setTimeout(setCardCSS, card.timerSeconds * 1000);
   }
@@ -104,6 +106,8 @@ $(document).ready(function() {
       setTimeout(setCardCSS, card.timerSeconds * 1000);
     } else {
       $('body').css("background-color", 'white');
+      $('.display-container').css("visibility", "hidden");
+      $('.config-container').css("visibility", "visible");
     }
   }
 });
