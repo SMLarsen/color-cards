@@ -5,6 +5,7 @@ var position = 0;
 var interval;
 var currentCard = 0;
 var totalCards = 0;
+var color="";
 
 function Card(position, color, timerSeconds, showTimer) {
   this.position = position;
@@ -36,6 +37,11 @@ $(document).ready(function() {
   });
   //-------------------
 
+  $(".color").on("click", function(event) {
+    event.preventDefault();
+    color = $(this).data("color");
+    // pickColor();
+  });
 
   $("#add-button").on("click", function(event) {
     event.preventDefault();
