@@ -40,7 +40,6 @@ $(document).ready(function() {
   $(".color").on("click", function(event) {
     event.preventDefault();
     color = $(this).data("color");
-    // pickColor();
   });
 
   $("#add-button").on("click", function(event) {
@@ -55,8 +54,6 @@ $(document).ready(function() {
 
   function addCard() {
     inputArray = $(".config-form").serializeArray();
-
-    var color = '';
     var timerSeconds = 0;
     var showTimer = false;
     cardValues = {};
@@ -65,21 +62,20 @@ $(document).ready(function() {
       $("#results").append(field.name + ":" + field.value + " ");
     });
 
+
     inputArray.forEach(function (element, index, array) {
       cardValues[element.name] = element.value;
     });
 
     position++;
-    color = cardValues.color;
     timerSeconds = cardValues.duration;
-    showTimer = false;
+    showTimer = 'No';
     if (cardValues.countdown === 'true') {
-      showTimer = true;
+      showTimer = 'Yes';
     }
 
     card = new Card(position, color, timerSeconds, showTimer);
     cardArray.push(card);
-
     totalCards = cardArray.length;
 
     displayCard(card);
@@ -88,7 +84,7 @@ $(document).ready(function() {
   function displayCard (card) {
     var string = '<tr class="cardRow">';
     string += '<td>' + card.position + '</td>';
-    string += '<td>' + card.color + '</td>';
+    string += '<td style="background-color: ' + card.color + '">' + card.color + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
     string += '</tr>';

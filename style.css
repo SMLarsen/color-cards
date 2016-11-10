@@ -2,6 +2,11 @@
   background-color: #008062;
 }*/
 
+#card-table td, th {
+  text-align: center;
+  width: 100px;
+}
+
 /*.config-container {
   background-color: lightgrey;
   margin: 25px 30%;
