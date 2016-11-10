@@ -3,24 +3,24 @@
 
 <head>
     <title>Color Cards</title>
-    <link rel="stylesheet" href="../vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../vendor/animate.css" />
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="../vendor/jquery.min.js"></script>
-    <script type="text/javascript" src="../vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 
 </head>
 
 <body>
-    <div class="container config-container col-md-4">
+    <div class="container config-container col-md-6">
         <h1>Color Cards Configuration</h1>
         <h2>Enter card configuration here:</h2>
         <form class="config-form" action="index.html" method="post">
 
-            <div class="form-group">
+            <div class="form-group col-md-2">
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle vcenter" type="button" data-toggle="dropdown">Color
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Color
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu" id="colorPick">
                         <li class="color" data-color="white"><a style="background-color: white; color: black">White</a></li>
@@ -35,12 +35,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <label class="control-label" for="duration">Duration (sec)
                 <input class="form-control" type="number" name="duration" value="10" min="0"></label>
             </div>
 
-            <div class="checkbox">
+            <div class="checkbox col-md-4">
                 <label>
                     <input type="checkbox"> Remember me
                 </label>
@@ -70,9 +70,9 @@
         </div>
         <div id="controls-container">
             <!-- <button id="restart-btn" type="button" name="restart">&#xab;</button> -->
-            <button class="btn-default" id="play-btn" type="button" name="play">Play</button>
+            <button class="btn-default" id="play-btn" type="button" name="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
             <!-- <button id="pause-btn" type="button" name="pause">&#x2013;</button> -->
-            <button class="btn-default" id="stop-btn" type="button" name="end">Stop</button>
+            <button class="btn-default" id="stop-btn" type="button" name="end"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
         </div>
     </div>
 </body>
