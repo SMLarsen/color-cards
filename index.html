@@ -13,12 +13,11 @@
 </head>
 
 <body>
-    <div class="container config-container col-md-6">
+    <div class="container config-container">
         <h1>Color Cards Configuration</h1>
-        <h2>Enter card configuration here:</h2>
         <form class="config-form" action="index.html" method="post">
 
-            <div class="form-group col-md-2">
+            <!-- <div class="form-group col-md-2">
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Color
                       <span class="caret"></span></button>
@@ -33,30 +32,43 @@
                         <li class="color" data-color="black"><a style="background-color: black; color: white">Black</a></li>
                     </ul>
                 </div>
+            </div> -->
+
+            <div class="colorPicker">
+                <div class="color" data-color="white" style="background-color: white; color: black">White</div>
+                <div class="color" data-color="red" style="background-color: red; color: white">Red</div>
+                <div class="color" data-color="orange" style="background-color: orange; color: black">Orange</div>
+                <div class="color" data-color="yellow" style="background-color: yellow; color: black">Yellow</div>
+                <div class="color" data-color="green" style="background-color: green; color: white">Green</div>
+                <div class="color" data-color="blue" style="background-color: blue; color: white">Blue</div>
+                <div class="color" data-color="purple" style="background-color: purple; color: white">Purple</div>
+                <div class="color" data-color="black" style="background-color: black; color: white">Black</div>
             </div>
 
-            <div class="form-group col-md-4">
-                <label class="control-label" for="duration">Duration (sec)
-                <input class="form-control" type="number" name="duration" value="10" min="0"></label>
-            </div>
+            <div class="configInput">
+                <div class="form-group">
+                    <label class="control-label" for="duration">Duration (sec)
+                    <input class="form-control" type="number" name="duration" value="10" min="0"></label>
+                </div>
 
-            <div class="checkbox col-md-4">
-                <label>
+                <div class="checkbox">
+                    <label>
                     <input type="checkbox"> Remember me
                 </label>
+                </div>
             </div>
 
-            <div class="col-md-2">
-                <button class="btn-default form-control" type="button" id="add-button" name="add-button">Add Card</button>
+            <div class="configInput">
+                <div>
+                    <button class="btn-default form-control" type="button" id="add-button" name="add-button">Add Card</button>
+                </div>
             </div>
         </form>
 
-        <div id="cards">
-          <div class="col-md-1"></div>
+        <div class="configInput" id="cards">
             <table class="table table-responsive" id="card-table">
                 <tr>
                     <th>Sequence</th>
-                    <!-- <th>Color</th> -->
                     <th>Duration</th>
                     <th>Countdown</th>
                 </tr>
@@ -64,7 +76,7 @@
         </div>
 
     </div>
-    <div id="container display-container">
+    <div class="container" id="display-container">
         <div id="counter">
             <h4 id="counter-seconds">test</h4>
         </div>

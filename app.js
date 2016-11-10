@@ -50,6 +50,8 @@ $(document).ready(function() {
   $(".color").on("click", function(event) {
     event.preventDefault();
     color = $(this).data("color");
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
   });
 
   $("#add-button").on("click", function(event) {
