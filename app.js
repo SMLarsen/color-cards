@@ -7,6 +7,16 @@ var currentCard = 0;
 var totalCards = 0;
 var color="";
 
+var colorStyles = [
+  {name: 'red', font: 'white'},
+  {name: 'orange', font: 'black'},
+  {name: 'yellow', font: 'black'},
+  {name: 'green', font: 'white'},
+  {name: 'blue', font: 'white'},
+  {name: 'purple', font: 'white'},
+  {name: 'white', font: 'black'},
+  {name: 'black', font: 'white'}];
+
 function Card(position, color, timerSeconds, showTimer) {
   this.position = position;
   this.color = color;
@@ -82,12 +92,13 @@ $(document).ready(function() {
   }
 
   function displayCard (card) {
-    var string = '<tr class="cardRow">';
+    var string = '<tr class="cardRow"' + getColorStyle(card.color) + '>';
     string += '<td>' + card.position + '</td>';
-    string += '<td style="background-color: ' + card.color + '">' + card.color + '</td>';
+    // string += '<td>' + card.color + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
     string += '</tr>';
+    console.log(string);
     $('#card-table').append(string);
   }
 
@@ -112,4 +123,15 @@ $(document).ready(function() {
       $('.config-container').css("visibility", "visible");
     }
   }
+
+  function getColorStyle(color) {
+      for (var i = 0; i < colorStyles.length; i++) {
+        if (colorStyles[i].name === color) {
+          string = ' style="background-color: ' +  color +
+          '; color: ' + colorStyles[i].font + '">';
+          return string;
+        }
+      }
+  }
+
 });

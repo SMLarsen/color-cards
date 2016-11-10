@@ -7,6 +7,10 @@
   width: 100px;
 }
 
+li {
+  border: 1px solid white;
+}
+
 /*.config-container {
   background-color: lightgrey;
   margin: 25px 30%;
