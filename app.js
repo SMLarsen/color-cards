@@ -35,17 +35,8 @@ function Card(position, color, timerSeconds, showTimer) {
 // cardArray.push(card);
 
 $(document).ready(function() {
-//-------------------
-  $("#start-btn").on("click", function(event) {
-    event.preventDefault();
-    startBtn();
-  });
 
-  $("#stop-btn").on("click", function(event) {
-    event.preventDefault();
-    stopBtn();
-  });
-  //-------------------
+//====================  Events  =========================
 
   $(".color").on("click", function(event) {
     event.preventDefault();
@@ -56,14 +47,22 @@ $(document).ready(function() {
 
   $("#add-button").on("click", function(event) {
     event.preventDefault();
+    $(".color").siblings().removeClass('active');
     addCard();
   });
 
-  $("#start-button").on("click", function(event) {
-    event.preventDefault();
-    startDisplay();
-  });
+    $("#play-btn").on("click", function() {
+      console.log('play');
+      startDisplay();
+    });
 
+    $("#stop-btn").on("click", function() {
+      console.log('stop');
+      stopBtn();
+    });
+//==================  Functions  ===================
+
+// Adds color cards to playlist
   function addCard() {
     inputArray = $(".config-form").serializeArray();
     var timerSeconds = 0;
@@ -73,7 +72,6 @@ $(document).ready(function() {
     $.each(inputArray, function(i, field){
       $("#results").append(field.name + ":" + field.value + " ");
     });
-
 
     inputArray.forEach(function (element, index, array) {
       cardValues[element.name] = element.value;
@@ -93,6 +91,7 @@ $(document).ready(function() {
     displayCard(card);
   }
 
+// Adds color card as a row in the playlist table
   function displayCard (card) {
     var string = '<tr class="cardRow"' + getColorStyle(card.color) + '>';
     string += '<td>' + card.position + '</td>';
@@ -104,6 +103,7 @@ $(document).ready(function() {
     $('#card-table').append(string);
   }
 
+// Starts the playlist and hides the configuration section
   function startDisplay() {
     card = cardArray[currentCard];
     currentCard++;
@@ -113,6 +113,7 @@ $(document).ready(function() {
     setTimeout(setCardCSS, card.timerSeconds * 1000);
   }
 
+// Changes display per playlist timings
   function setCardCSS() {
     if (currentCard < totalCards) {
       card = cardArray[currentCard];
@@ -126,6 +127,7 @@ $(document).ready(function() {
     }
   }
 
+// Formats html styling based on selected color
   function getColorStyle(color) {
       for (var i = 0; i < colorStyles.length; i++) {
         if (colorStyles[i].name === color) {

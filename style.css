@@ -1,6 +1,5 @@
-/*body {
-  background-color: #008062;
-}*/
+
+/*Playlist table styling*/
 
 table {
   display: flex;
@@ -15,9 +14,7 @@ table {
   width: 200px;
 }
 
-li {
-  border: 2px solid white;
-}
+/*Configuration Input Form styling*/
 
 .config-form {
   display: flex;
@@ -51,112 +48,12 @@ li {
   align-items: center;
 }
 
+/*Playlist display styling*/
+
 #display-container {
   position: fixed;
-  bottom: 20px;
-}
-
-
-/*.config-container {
-  background-color: lightgrey;
-  margin: 25px 30%;
-  padding-bottom: 25px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
-}
-
-h1 {
-  flex-flow: row;
-  text-align: center;
-}
-
-.config-form {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  box-shadow: 10px 10px 5px darkgrey;
-}
-
-label {
-  margin: 5px;
-  padding-left: 10px;
-  width: 200px;
-}
-
-button {
-  width: 100px;
-  margin: 10px 150px 10px 150px;
-}
-
-table {
-    border-collapse: collapse;
-    box-shadow: 10px 10px 5px darkgrey;
-}
-
-table, th, td {
-  margin: 20px 0;
-    border: 1px solid darkgrey;
-}
-
-th, td {
-  text-align: center;
-  width: 150px;
-}
-
-.fadeOut {
-  animation: fadeOut 2s ease-out;
-}*/
-
-/*@keyframes fadeIn {
-   0% {
-      opacity: 0;
-   }
-   1% {
-      opacity: .99;
-   }
-   100% {
-      opacity: 1;
-   }
-}
-
-@keyframes fadeOut {
-   0% {
-      opacity: 1;
-   }
-   99% {
-      opacity: .99;
-   }
-   100% {
-      opacity: 0;
-   }
-}*/
-
-/*display container and elements*/
-
-/*h4 {
-  font-size: 100px;
-}
-
-#display-container {
-  visibility: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#controls-container {
-  position: absolute;
   bottom: 20px;
 }
-
-#controls-container button {
-  width: 100px;
-  font-size: 30px;
-  font-weight: bold;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 5px 5px 2px darkgrey;
-}*/
