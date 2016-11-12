@@ -2,19 +2,26 @@
 /*Playlist table styling*/
 
 table {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 20px;
-  margin-left: 270px;
+/*width: 20%;*/
+/*margin: 0 20%;*/
+}
+
+#cards {
+  width: 50%;
+  margin: 0 auto;
 }
 
 #card-table td, th {
   text-align: center;
-  width: 200px;
 }
 
 /*Configuration Input Form styling*/
+
+.config-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .config-form {
   display: flex;
@@ -42,18 +49,52 @@ table {
   box-shadow: 3px 3px 1px grey;
 }
 
-.configInput {
+.configInput, .configTable {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.configInput input {
+  margin: 5px 15px;
+}
+
+#countdown-radio {
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
+
+
 /*Playlist display styling*/
 
 #display-container {
   position: fixed;
-  display: flex;
+  display: inline-flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   bottom: 20px;
+}
+
+#counter h4 {
+  visibility: hidden;
+  font-size: 40em;
+  color: lightgrey;
+}
+
+#display-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;;
+  justify-content: center;
+}
+
+#controls-container button {
+  font-size: 2em;
+  margin: 0 10px;
+  height: 60px;
+  width: 60px;
 }

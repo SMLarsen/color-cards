@@ -2,10 +2,12 @@ var card = {};
 var inputArray = [];
 var cardArray = [];
 var position = 0;
-var interval;
+var timeout;
+var counter;
 var currentCard = 0;
 var totalCards = 0;
 var color="";
+var seconds=0;
 
 var colorStyles = [
   {name: 'red', font: 'white'},
@@ -52,13 +54,11 @@ $(document).ready(function() {
   });
 
     $("#play-btn").on("click", function() {
-      console.log('play');
       startDisplay();
     });
 
     $("#stop-btn").on("click", function() {
-      console.log('stop');
-      stopBtn();
+      stopDisplay();
     });
 //==================  Functions  ===================
 
@@ -76,18 +76,12 @@ $(document).ready(function() {
     inputArray.forEach(function (element, index, array) {
       cardValues[element.name] = element.value;
     });
-
     position++;
     timerSeconds = cardValues.duration;
-    showTimer = 'No';
-    if (cardValues.countdown === 'true') {
-      showTimer = 'Yes';
-    }
-
+    showTimer = cardValues.countdown;
     card = new Card(position, color, timerSeconds, showTimer);
     cardArray.push(card);
     totalCards = cardArray.length;
-
     displayCard(card);
   }
 
@@ -95,11 +89,9 @@ $(document).ready(function() {
   function displayCard (card) {
     var string = '<tr class="cardRow"' + getColorStyle(card.color) + '>';
     string += '<td>' + card.position + '</td>';
-    // string += '<td>' + card.color + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
     string += '</tr>';
-    console.log(string);
     $('#card-table').append(string);
   }
 
@@ -110,7 +102,8 @@ $(document).ready(function() {
     $('.config-container').css("visibility", "hidden");
     $('.display-container').css("visibility", "visible");
     $('body').css("background-color", card.color);
-    setTimeout(setCardCSS, card.timerSeconds * 1000);
+    if (card.showTimer === 'On') {setTimer();}
+    timeout = setTimeout(setCardCSS, card.timerSeconds * 1000);
   }
 
 // Changes display per playlist timings
@@ -119,13 +112,23 @@ $(document).ready(function() {
       card = cardArray[currentCard];
       currentCard++;
       $('body').css("background-color", card.color);
-      setTimeout(setCardCSS, card.timerSeconds * 1000);
+      console.log('timerSeconds', card.timerSeconds);
+      if (card.showTimer === 'On') {
+        setTimer();
+      }
+      timeout = setTimeout(setCardCSS, card.timerSeconds * 1000);
     } else {
       $('body').css("background-color", 'white');
       $('.display-container').css("visibility", "hidden");
       $('.config-container').css("visibility", "visible");
+      $('#counter-seconds').text('');
     }
   }
+
+// Stops display of playlist
+function stopDisplay () {
+  clearInterval(timeout);
+}
 
 // Formats html styling based on selected color
   function getColorStyle(color) {
@@ -136,6 +139,31 @@ $(document).ready(function() {
           return string;
         }
       }
+  }
+
+// Countdown timer
+  function setTimer() {
+    seconds = card.timerSeconds;
+    counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+    console.log('set', seconds, counter);
+  }
+
+  function timer() {
+    seconds--;
+    console.log('timer', seconds, counter);
+    if (seconds <= 0)
+    {
+       clearInterval(counter);
+       return;
+    }
+    $('#counter-seconds').text(seconds);
+  }
+
+  function appendCounter() {
+    var string =  '<div id="counter">' +
+        '<h4 id="counter-seconds">test</h4>' +
+        '</div>';
+    $('#controls-container').prepend(string);
   }
 
 });

@@ -14,7 +14,7 @@
 
 <body>
 
-    <div class="container config-container">
+    <div class="config-container">
         <h1>Color Cards Configuration</h1>
         <form class="config-form" action="index.html" method="post">
 
@@ -30,23 +30,24 @@
             </div>
 
             <div class="configInput">
-                <label class="control-label" for="duration">Duration (sec)
-                <input class="form-control" type="number" name="duration" value="10" min="0"></label>
+                <label for="duration">Duration (sec)
+                <input type="number" name="duration" value="10" min="0"></label>
+                <label id="countdown-radio" for="countdown">Display Timer
+                  <input class="radio" type="radio" name="countdown" value="Off" checked> Off
+                  <input class="radio" type="radio" name="countdown" value="On"> On
+                </label>
 
-                <div class="checkbox">
-                    <label><input type="checkbox"> Remember me</label>
-                </div>
             </div>
 
             <div class="configInput">
                 <div>
-                    <button class="btn-default form-control" type="button" id="add-button" name="add-button">Add Card</button>
+                    <button class="btn-default" type="button" id="add-button" name="add-button">Add Card</button>
                 </div>
             </div>
         </form>
 
-        <div class="configInput" id="cards">
-            <table class="table table-responsive" id="card-table">
+        <div class="configTable" id="cards">
+            <table class="table" id="card-table">
                 <tr>
                     <th>Sequence</th>
                     <th>Duration</th>
@@ -57,16 +58,14 @@
 
     </div>
 
-    <div class="container" id="display-container">
-        <div id="counter">
-            <h4 id="counter-seconds">test</h4>
-        </div>
+    <div id="display-container">
+
         <div id="controls-container">
             <button class="btn-default" id="play-btn" type="button" name="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
             <button class="btn-default" id="stop-btn" type="button" name="end"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
         </div>
     </div>
-    
+
 </body>
 
 </html>
