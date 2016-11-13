@@ -53,22 +53,28 @@ $(document).ready(function() {
     addCard();
   });
 
-    $("#trash-button").on("click", function(event) {
-      event.preventDefault();
-      $('#cardHeader').siblings().remove();
-    });
+  $("#trash-button").on("click", function(event) {
+    event.preventDefault();
+    $('#cardHeader').siblings().remove();
+  });
 
-    $("#play-btn").on("click", function() {
-      startDisplay();
-    });
+  $("#card-table").on("click", ".delete-button", function(event) {
+    event.preventDefault();
+    console.log($(this));
+    $(this).parent().parent().remove();
+  });
 
-    $("#stop-btn").on("click", function() {
-      stopDisplay();
-    });
+  $("#play-btn").on("click", function() {
+    startDisplay();
+  });
 
-    $("#repeat-btn").on("click", function() {
-      startDisplay();
-    });
+  $("#stop-btn").on("click", function() {
+    stopDisplay();
+  });
+
+  $("#repeat-btn").on("click", function() {
+    startDisplay();
+  });
 //==================  Functions  ===================
 
 // Adds color cards to playlist
@@ -100,7 +106,7 @@ $(document).ready(function() {
     string += '<td>' + card.position + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
-    string += '<td>' + '<button type="button" name="delete-btn">' +
+    string += '<td>' + '<button type="button" class="delete-button" name="delete-button">' +
       '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
      '</button></td>';
     string += '</tr>';
