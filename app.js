@@ -8,6 +8,15 @@ var currentCard = 0;
 var totalCards = 0;
 var color="";
 var seconds=0;
+var delBtnEl = '<button type="button" class="card-button delete-button" name="delete-button">' +
+  '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+  '</button>';
+var upBtnEl = '<button type="button" class="card-button up-button" name="up-button">' +
+  '<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>' +
+  '</button>';
+var downBtnEl = '<button type="button" class="card-button down-button" name="down-button">' +
+  '<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>' +
+  '</button>';
 
 var colorStyles = [
   {name: 'red', font: 'white'},
@@ -60,8 +69,19 @@ $(document).ready(function() {
 
   $("#card-table").on("click", ".delete-button", function(event) {
     event.preventDefault();
-    console.log($(this));
     $(this).parent().parent().remove();
+  });
+
+  $("#card-table").on("click", ".up-button", function(event) {
+    event.preventDefault();
+    var $el = $(this).parent().parent();
+    $el.insertBefore($el.prev('.cardRow'));
+  });
+
+  $("#card-table").on("click", ".down-button", function(event) {
+    event.preventDefault();
+    var $el = $(this).parent().parent();
+    $el.insertAfter($el.next('.cardRow'));
   });
 
   $("#play-btn").on("click", function() {
@@ -106,9 +126,7 @@ $(document).ready(function() {
     string += '<td>' + card.position + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
-    string += '<td>' + '<button type="button" class="delete-button" name="delete-button">' +
-      '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
-     '</button></td>';
+    string += '<td>' + upBtnEl + delBtnEl + downBtnEl + '</td>';
     string += '</tr>';
     $('#card-table').append(string);
   }

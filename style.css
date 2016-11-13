@@ -15,15 +15,6 @@ table {
   margin: 0 auto;
 }
 
-#card-table td, th {
-  text-align: center;
-}
-
-.cardRow span {
-  font-size: .8em;
-  color: black;
-}
-
 /*Configuration Input Form styling*/
 
 .config-container {
@@ -62,7 +53,7 @@ table {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .configInput input {
@@ -75,7 +66,18 @@ table {
   align-items: center;
 }
 
+#card-table td, th {
+  text-align: center;
+}
 
+.cardRow span {
+  font-size: .8em;
+  color: black;
+}
+
+.card-button {
+  margin: 0 2px;
+}
 
 /*Playlist display styling*/
 
