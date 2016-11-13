@@ -53,6 +53,11 @@ $(document).ready(function() {
     addCard();
   });
 
+    $("#trash-button").on("click", function(event) {
+      event.preventDefault();
+      $('#cardHeader').siblings().remove();
+    });
+
     $("#play-btn").on("click", function() {
       startDisplay();
     });
@@ -95,6 +100,9 @@ $(document).ready(function() {
     string += '<td>' + card.position + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
+    string += '<td>' + '<button type="button" name="delete-btn">' +
+      '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+     '</button></td>';
     string += '</tr>';
     $('#card-table').append(string);
   }

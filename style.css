@@ -19,6 +19,11 @@ table {
   text-align: center;
 }
 
+.cardRow span {
+  font-size: .8em;
+  color: black;
+}
+
 /*Configuration Input Form styling*/
 
 .config-container {

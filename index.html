@@ -48,10 +48,12 @@
 
         <div class="configTable" id="cards">
             <table class="table" id="card-table">
-                <tr>
+                <tr id="cardHeader">
                     <th>Sequence</th>
                     <th>Duration</th>
                     <th>Countdown</th>
+                    <th>
+                      <button type="button" id="trash-button" name="trash-button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></th>
                 </tr>
             </table>
         </div>
@@ -62,11 +64,11 @@
       <div id="counter-holder"></div>
     </div>
 
-      <div id="controls-container">
-        <button class="btn-default" id="replay-btn" type="button" name="play"><span class="glyphicon glyphicon-repeat" aria-hidden="true" disabled></span></button>
-          <button class="btn-default" id="play-btn" type="button" name="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-          <button class="btn-default" id="stop-btn" type="button" name="end"><span class="glyphicon glyphicon-stop" aria-hidden="true" disabled></span></button>
-      </div>
+    <div id="controls-container">
+      <button class="btn-default" id="replay-btn" type="button" name="play"><span class="glyphicon glyphicon-repeat" aria-hidden="true" disabled></span></button>
+        <button class="btn-default" id="play-btn" type="button" name="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        <button class="btn-default" id="stop-btn" type="button" name="end"><span class="glyphicon glyphicon-stop" aria-hidden="true" disabled></span></button>
+    </div>
 
 </body>
 
