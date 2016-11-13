@@ -60,6 +60,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".color").siblings().removeClass('active');
     addCard();
+    cardButtonAbilifier();
   });
 
   $("#trash-button").on("click", function(event) {
@@ -69,19 +70,20 @@ $(document).ready(function() {
 
   $("#card-table").on("click", ".delete-button", function(event) {
     event.preventDefault();
-    $(this).parent().parent().remove();
+    deleteCard($(this));
+    cardButtonAbilifier();
   });
 
   $("#card-table").on("click", ".up-button", function(event) {
     event.preventDefault();
-    var $el = $(this).parent().parent();
-    $el.insertBefore($el.prev('.cardRow'));
+    moveCardUp($(this));
+    cardButtonAbilifier();
   });
 
   $("#card-table").on("click", ".down-button", function(event) {
     event.preventDefault();
-    var $el = $(this).parent().parent();
-    $el.insertAfter($el.next('.cardRow'));
+    moveCardDown($(this));
+    cardButtonAbilifier();
   });
 
   $("#play-btn").on("click", function() {
@@ -129,6 +131,34 @@ $(document).ready(function() {
     string += '<td>' + upBtnEl + delBtnEl + downBtnEl + '</td>';
     string += '</tr>';
     $('#card-table').append(string);
+    cardButtonAbilifier();
+  }
+
+// enable and disable card movement buttons
+function cardButtonAbilifier() {
+  $('.cardRow').find('.up-button').prop("disabled", false);
+  $('.cardRow').find('.down-button').prop("disabled", false);
+
+  $('.cardRow').find('.up-button').first().prop("disabled", true);
+  $('.cardRow').find('.down-button').last().prop("disabled", true);
+}
+
+// delete card from playlist
+  function deleteCard($this) {
+    var $el = $this.parent().parent();
+    $el.remove();
+  }
+
+// move card up one row in playlist
+  function moveCardUp($this) {
+    var $el = $this.parent().parent();
+    $el.insertBefore($el.prev('.cardRow'));
+  }
+
+// move card down one row in playlist
+  function moveCardDown($this) {
+    var $el = $this.parent().parent();
+    $el.insertAfter($el.next('.cardRow'));
   }
 
 // Starts the playlist and hides the configuration section
