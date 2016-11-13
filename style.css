@@ -1,6 +1,10 @@
 
 /*Playlist table styling*/
 
+h1 {
+  text-align: center;
+}
+
 table {
 /*width: 20%;*/
 /*margin: 0 20%;*/
@@ -70,31 +74,40 @@ table {
 
 /*Playlist display styling*/
 
-#display-container {
-  position: fixed;
+#controls-container {
+  width: 100%;
+  /*position: fixed;*/
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   bottom: 20px;
 }
 
-#counter h4 {
-  visibility: hidden;
-  font-size: 40em;
+#counter-holder {
+  /*visibility: hidden;*/
+  font-size: 30em;
   color: lightgrey;
 }
 
 #display-container {
+  position: absolute;
+  bottom: 30px;
   width: 100%;
+  text-align: center;
   display: flex;
   flex-direction: column;;
   justify-content: center;
 }
 
+#controls-container {
+  position: absolute;
+  bottom: 10px;
+}
+
 #controls-container button {
-  font-size: 2em;
+  font-size: 1.7em;
   margin: 0 10px;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
 }

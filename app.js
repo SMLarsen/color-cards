@@ -60,6 +60,10 @@ $(document).ready(function() {
     $("#stop-btn").on("click", function() {
       stopDisplay();
     });
+
+    $("#repeat-btn").on("click", function() {
+      startDisplay();
+    });
 //==================  Functions  ===================
 
 // Adds color cards to playlist
@@ -100,7 +104,7 @@ $(document).ready(function() {
     card = cardArray[currentCard];
     currentCard++;
     $('.config-container').css("visibility", "hidden");
-    $('.display-container').css("visibility", "visible");
+    $('#display-container').css("visibility", "visible");
     $('body').css("background-color", card.color);
     if (card.showTimer === 'On') {setTimer();}
     timeout = setTimeout(setCardCSS, card.timerSeconds * 1000);
@@ -119,7 +123,7 @@ $(document).ready(function() {
       timeout = setTimeout(setCardCSS, card.timerSeconds * 1000);
     } else {
       $('body').css("background-color", 'white');
-      $('.display-container').css("visibility", "hidden");
+      $('#display-container').css("visibility", "hidden");
       $('.config-container').css("visibility", "visible");
       $('#counter-seconds').text('');
     }
@@ -156,14 +160,7 @@ function stopDisplay () {
        clearInterval(counter);
        return;
     }
-    $('#counter-seconds').text(seconds);
-  }
-
-  function appendCounter() {
-    var string =  '<div id="counter">' +
-        '<h4 id="counter-seconds">test</h4>' +
-        '</div>';
-    $('#controls-container').prepend(string);
+    $('#counter-holder').text(seconds);
   }
 
 });

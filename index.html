@@ -15,8 +15,8 @@
 <body>
 
     <div class="config-container">
-        <h1>Color Cards Configuration</h1>
         <form class="config-form" action="index.html" method="post">
+          <h1>Build Color Playlist</h1>
 
             <div class="colorPicker">
                 <div class="color" data-color="white" style="background-color: white; color: black">White</div>
@@ -59,13 +59,14 @@
     </div>
 
     <div id="display-container">
-
-        <div id="controls-container">
-          <button class="btn-default" id="replay-btn" type="button" name="play"><span class="glyphicon glyphicon-repeat" aria-hidden="true" disabled></span></button>
-            <button class="btn-default" id="play-btn" type="button" name="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-            <button class="btn-default" id="stop-btn" type="button" name="end"><span class="glyphicon glyphicon-stop" aria-hidden="true" disabled></span></button>
-        </div>
+      <div id="counter-holder"></div>
     </div>
+
+      <div id="controls-container">
+        <button class="btn-default" id="replay-btn" type="button" name="play"><span class="glyphicon glyphicon-repeat" aria-hidden="true" disabled></span></button>
+          <button class="btn-default" id="play-btn" type="button" name="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+          <button class="btn-default" id="stop-btn" type="button" name="end"><span class="glyphicon glyphicon-stop" aria-hidden="true" disabled></span></button>
+      </div>
 
 </body>
 
