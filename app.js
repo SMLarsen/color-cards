@@ -198,9 +198,9 @@ $(document).ready(function() {
             card = cardArray[currentCard];
             currentCard++;
             $('body').css("background-color", card.color);
-            $('#counter-holder').text(card.timerSeconds);
             // console.log('timerSeconds', card.timerSeconds);
             if (card.showTimer === 'On') {
+              $('#counter-holder').text(card.timerSeconds);
                 setTimer();
             }
             timeout = setTimeout(setCardCSS, card.timerSeconds * 1000);
