@@ -69,19 +69,16 @@ $(document).ready(function() {
 
   $("#card-table").on("click", ".delete-button", function(event) {
     event.preventDefault();
-    console.log('delete card');
     moveCard($(this), 0);
   });
 
   $("#card-table").on("click", ".up-button", function(event) {
     event.preventDefault();
-    console.log('move card up');
     moveCard($(this), -1);
   });
 
   $("#card-table").on("click", ".down-button", function(event) {
     event.preventDefault();
-    console.log('move card down');
     moveCard($(this), 1);
   });
 
@@ -93,7 +90,9 @@ $(document).ready(function() {
     stopDisplay();
   });
 
-  $("#repeat-btn").on("click", function() {
+  $("#replay-btn").on("click", function() {
+    console.log('repeat');
+    stopDisplay();
     startDisplay();
   });
 //==================  Functions  ===================
@@ -151,7 +150,6 @@ function cardButtonAbilifier() {
   function moveCard($this, direction) {
     var $el = $this.parent().parent();
     var idx = $el.data('idx');
-    console.log("idx:", idx, 'direction:', direction);
     if (direction === 0) {          // delete card
       cardArray.splice(idx, 1);
     } else {
@@ -182,22 +180,31 @@ function cardButtonAbilifier() {
       card = cardArray[currentCard];
       currentCard++;
       $('body').css("background-color", card.color);
+      $('counter-holder').text(card.timerSeconds);
       console.log('timerSeconds', card.timerSeconds);
       if (card.showTimer === 'On') {
         setTimer();
       }
       timeout = setTimeout(setCardCSS, card.timerSeconds * 1000);
     } else {
-      $('body').css("background-color", 'white');
-      $('#display-container').css("visibility", "hidden");
-      $('.config-container').css("visibility", "visible");
-      $('#counter-seconds').text('');
+      showConfig();
     }
   }
+
+// hide playlist display and show config
+  function showConfig() {
+    $('body').css("background-color", 'white');
+    $('#display-container').css("visibility", "hidden");
+    $('.config-container').css("visibility", "visible");
+    $('counter-holder').text('');
+  }
+
 
 // Stops display of playlist
 function stopDisplay () {
   clearInterval(timeout);
+  currentCard = 0;
+  showConfig();
 }
 
 // Formats html styling based on selected color
@@ -223,6 +230,7 @@ function stopDisplay () {
     console.log('timer', seconds, counter);
     if (seconds <= 0)
     {
+      $('#counter-holder').text('');
        clearInterval(counter);
        return;
     }
