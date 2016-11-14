@@ -60,7 +60,6 @@ $(document).ready(function() {
     event.preventDefault();
     $(".color").siblings().removeClass('active');
     addCard();
-    cardButtonAbilifier();
   });
 
   $("#trash-button").on("click", function(event) {
@@ -70,20 +69,20 @@ $(document).ready(function() {
 
   $("#card-table").on("click", ".delete-button", function(event) {
     event.preventDefault();
-    deleteCard($(this));
-    cardButtonAbilifier();
+    console.log('delete card');
+    moveCard($(this), 0);
   });
 
   $("#card-table").on("click", ".up-button", function(event) {
     event.preventDefault();
-    moveCardUp($(this));
-    cardButtonAbilifier();
+    console.log('move card up');
+    moveCard($(this), -1);
   });
 
   $("#card-table").on("click", ".down-button", function(event) {
     event.preventDefault();
-    moveCardDown($(this));
-    cardButtonAbilifier();
+    console.log('move card down');
+    moveCard($(this), 1);
   });
 
   $("#play-btn").on("click", function() {
@@ -119,20 +118,25 @@ $(document).ready(function() {
     card = new Card(position, color, timerSeconds, showTimer);
     cardArray.push(card);
     totalCards = cardArray.length;
-    displayCard(card);
+
+    displayPlaylist();
   }
 
 // Adds color card as a row in the playlist table
-  function displayCard (card) {
-    var string = '<tr class="cardRow"' + getColorStyle(card.color) + '>';
+function displayPlaylist() {
+  $('.cardRow').remove();
+  for (var i = 0; i < cardArray.length; i++) {
+    card = cardArray[i];
+    var string = '<tr class="cardRow" data-idx="' + (card.position - 1) + '" ' + getColorStyle(card.color) + '>';
     string += '<td>' + card.position + '</td>';
     string += '<td>' + card.timerSeconds + '</td>';
     string += '<td>' + card.showTimer + '</td>';
     string += '<td>' + upBtnEl + delBtnEl + downBtnEl + '</td>';
     string += '</tr>';
     $('#card-table').append(string);
-    cardButtonAbilifier();
   }
+  cardButtonAbilifier();
+}
 
 // enable and disable card movement buttons
 function cardButtonAbilifier() {
@@ -143,22 +147,22 @@ function cardButtonAbilifier() {
   $('.cardRow').find('.down-button').last().prop("disabled", true);
 }
 
-// delete card from playlist
-  function deleteCard($this) {
+// move up or down or delete card in playlist
+  function moveCard($this, direction) {
     var $el = $this.parent().parent();
-    $el.remove();
-  }
-
-// move card up one row in playlist
-  function moveCardUp($this) {
-    var $el = $this.parent().parent();
-    $el.insertBefore($el.prev('.cardRow'));
-  }
-
-// move card down one row in playlist
-  function moveCardDown($this) {
-    var $el = $this.parent().parent();
-    $el.insertAfter($el.next('.cardRow'));
+    var idx = $el.data('idx');
+    console.log("idx:", idx, 'direction:', direction);
+    if (direction === 0) {          // delete card
+      cardArray.splice(idx, 1);
+    } else {
+      var temp = cardArray[$el.data('idx')];
+      cardArray[$el.data('idx')] = cardArray[$el.data('idx') + direction];
+      cardArray[$el.data('idx') + direction] = temp;
+    }
+    for (var i = 0; i < cardArray.length; i++) {
+      cardArray[i].position = i + 1;
+    }
+    displayPlaylist();
   }
 
 // Starts the playlist and hides the configuration section
@@ -200,8 +204,8 @@ function stopDisplay () {
   function getColorStyle(color) {
       for (var i = 0; i < colorStyles.length; i++) {
         if (colorStyles[i].name === color) {
-          string = ' style="background-color: ' +  color +
-          '; color: ' + colorStyles[i].font + '">';
+          string = 'style="background-color: ' +  color +
+          '; color: ' + colorStyles[i].font + '"';
           return string;
         }
       }
